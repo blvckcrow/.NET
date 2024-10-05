@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace NguyenKimHieu_2021602822
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            SERVICE s = new SERVICE();
+            int choice;
+            do
+            {
+                Console.WriteLine("1. Nhap danh sach doi tuong");
+                Console.WriteLine("2. Xuat danh sach doi tuong");
+                Console.WriteLine("3. Xoa doi tuong theo ID");
+                Console.WriteLine("4. Xuat trong luong may tinh theo ten gan dung");
+                Console.WriteLine("0. Thoat");
+                Console.WriteLine("Moi ban nhap lua chon");
+                choice = int.Parse(Console.ReadLine());
+                switch (choice)
+                {
+                    case 0:
+
+                        return;
+                    case 1:
+                        s.nhapDSMT();
+                        break;
+                    case 2:
+                        s.xuatDSMT();
+                        break;
+                    case 3:
+                        string manhap;
+                        Console.Write("Moi ban nhap ID can xoa:");
+                        manhap = Console.ReadLine();
+                        s.xoaMT(manhap);
+                        break;
+                    case 4:
+                        Console.WriteLine("Chua lam duoc!");
+                        break;
+                    default:
+                        Console.WriteLine("Ban nhap sai!");
+                        break;
+                }
+            }while (true);
+        }
+    }
+}

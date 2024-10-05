@@ -1,0 +1,71 @@
+Viết chương trình cho phép người dùng nhập các số vào từ bàn phím. Hiển thị dãy các số đã nhập, sau đó tìm và hiển thị số lớn nhất, số nhỏ nhất của dãy.
+using System.Collections;
+
+class Program
+{
+	static void Main(string[] args)
+	{
+		ArrayList dsSoNguyen = new ArrayList();
+		//Gọi phương thức đã viết để nhập các phần tử
+		NhapDanhSachSoNguyen(dsSoNguyen);
+		//Gọi phương thức đã viết để hiển thị danh sách
+		HienThiDanhSach(dsSoNguyen);
+		//Gọi phương thức đã viết để hiển thị phần tử lớn nhất trong danh sách
+		Console.WriteLine("\n\nPhan tu lon nhat la: {0}", 
+						TimPhanTuLonNhat(dsSoNguyen));
+		//Gọi phương thức đã viết để hiển thị phần tử nhỏ nhất trong danh sách
+		Console.WriteLine("\nPhan tu nho nhat la: {0}",
+ TimPhanTuNhoNhat(dsSoNguyen));
+		Console.ReadLine();
+}
+
+private static void HienThiDanhSach(ArrayList A)
+{
+	//Phương thức hiển thị nội dung của danh sách
+	Console.WriteLine("\nCac so da nhap: \n");
+	foreach (int item in A)
+	{
+		Console.Write("\t{0}", item);
+	}
+	}
+
+private static void NhapDanhSachSoNguyen(ArrayList A)
+{
+	//Phương thức nhập dãy các số lưu vào danh sách. Kết thúc việc nhập 
+	//khi user nhấn phím k
+	string tiepTuc = "";
+	while (tiepTuc != "k")
+	{
+		Console.Write("\nNhap vao 1 so: ");
+		A.Add(int.parse(Console.ReadLine()));
+		Console.Write("\nNhan k de ket thuc nhap: ");
+		tiepTuc = Console.ReadLine().ToLower();
+	}
+}
+static int TimPhanTuLonNhat(ArrayList ds)
+{
+	//Phương thức trả lại số lớn nhất trong danh sách 
+	int max = (int)ds[0];
+	for (int i = 1; i < ds.Count ; i++)
+	{
+		if (max < (int)ds[i])
+		{
+			max = (int)ds[i];
+		}
+	}
+	return max;
+}
+
+static double TimPhanTuNhoNhat(ArrayList ds)
+{
+	//Phương thức trả lại số nhỏ nhất trong danh sách 
+	double min = Convert.ToDouble(ds[0]);
+	for (int i = 1; i < ds.Count; i++)
+	{
+		if (min > Convert.ToDouble(ds[i]))
+		{
+			min = Convert.ToDouble(ds[i]);
+		}
+	}
+	return min;
+}

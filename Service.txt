@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace NguyenKimHieu_2021602822
+{
+    internal class SERVICE
+    {
+        List<MayTinh> dsmt = new List<MayTinh>();
+        public void nhapDSMT()
+        {
+            string ma;
+            string ten;
+            float trongluong;
+            string chon;
+            do
+            {
+                Console.Write("ID: ");
+                ma = Console.ReadLine();
+                Console.Write("Ten: ");
+                ten = Console.ReadLine();
+                Console.Write("Trong luong: ");
+                trongluong = float.Parse(Console.ReadLine());
+                MayTinh mt = new MayTinh(ma, ten, trongluong);
+                dsmt.Add(mt);
+                Console.WriteLine("Ban co muon nhap tiep khong?(y/n)");
+                chon = Console.ReadLine();
+            } while (chon == "y");
+        }
+        public void xuatDSMT()
+        {
+            Console.WriteLine("====DANH SACH MAY TINH====");
+            foreach (MayTinh m in dsmt)
+            {
+                m.inThongTin();
+            }
+        }
+        public void xoaMT(string ma)
+        {   
+            bool thay = false;
+            for (int i = 0; i < dsmt.Count; i++)
+            if (dsmt[i].id == ma) 
+                { 
+                    thay = true;
+                    dsmt.RemoveAt(i);
+                }
+            if (thay == false)
+            {
+                Console.WriteLine("Khong tim thay ID may");
+            }
+            else
+            {
+                Console.WriteLine("Danh sach may tinh sau khi xoa: ");
+                xuatDSMT();
+            }
+        }
+    }
+}
